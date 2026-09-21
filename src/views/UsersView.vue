@@ -22,6 +22,13 @@ onMounted(() => {
   <section>
     <h2>Users</h2>
 
+    <div v-if="selectedUser" class="selected-user">
+      <h2>Selected User</h2>
+      <p>Name: {{ selectedUser.name }}</p>
+      <p>Email: {{ selectedUser.email }}</p>
+      <p>Phone: {{ selectedUser.phone }}</p>
+    </div>
+
     <p v-if="loading">Loading users...</p>
 
     <p v-else-if="error">
@@ -36,12 +43,14 @@ onMounted(() => {
         @select="selectUser"
       />
     </div>
-
-    <div v-if="selectedUser">
-      <h2>Selected User</h2>
-      <p>Name: {{ selectedUser.name }}</p>
-      <p>Email: {{ selectedUser.email }}</p>
-      <p>Phone: {{ selectedUser.phone }}</p>
-    </div>
   </section>
 </template>
+
+<style scoped>
+.selected-user {
+  border: 2px solid #42b883;
+  padding: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+</style>
